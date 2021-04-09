@@ -67,10 +67,10 @@ function copyTemplates(name, config){
         2
       )
     });
-
+    console.log(name, config)
     await writeFileTree(parentPath, {
       'biubiu.config.js': genConfig({
-        name: this.name,
+        name: name,
         templateName: config.templateName,
         author: config.author,
       })
@@ -89,7 +89,7 @@ async function getTemplateName() {
       name: 'author',
       type: 'input',
       message: '作者',
-      default: ''
+      default: 'lsiten'
     },
     {
       name: 'templateName',

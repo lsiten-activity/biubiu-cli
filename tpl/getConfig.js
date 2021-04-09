@@ -7,12 +7,12 @@ module.exports = function ({
    repoUrl
  }) {
   return `module.exports = {
-    name: '${name}',
-    templateName: '${templateName}',
-    author: '${author}',
+    name: '${name || ''}',
+    templateName: '${templateName || ''}',
+    author: '${author || ''}',
     snapshot: '',
-    gitUrl: '${repoUrl}',
-    projectType: '${projectType}',
-    nameSpace: '${nameSpace}'
+    gitUrl: '${repoUrl || ''}',
+    projectType: '${projectType || ''}',
+    nameSpace: '${nameSpace || ''}'
   }`
 }
