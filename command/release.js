@@ -54,7 +54,7 @@ async function release() {
   await upVersion();
   pusBranch();
   spinner.succeed('🎉 模版提交完成');
-  await releaseTemplate({...templateConfig, baseApi});
+  await releaseTemplate({...templateConfig, baseApi, spinner});
 }
 
 async function releaseTemplate({
@@ -63,7 +63,8 @@ async function releaseTemplate({
   templateName,
   author,
   baseApi,
-  gitUrl
+  gitUrl,
+  spinner
 }) {
   try {
     await axios
@@ -75,9 +76,9 @@ async function releaseTemplate({
         gitUrl,
         version: resolveJson(rootPath).version
       });
-    chalk.green(`🎉 🎉 发布成功！`);
+    spinner.succeed('🎉 🎉 发布成功！');
   } catch (error) {
-    console.log(error);
+    spinner.error(error);
   }
 }
 
